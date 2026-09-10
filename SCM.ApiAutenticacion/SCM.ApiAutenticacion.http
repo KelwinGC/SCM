@@ -1,0 +1,6 @@
+@SCM.ApiAutenticacion_HostAddress = http://localhost:5095
+
+GET {{SCM.ApiAutenticacion_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

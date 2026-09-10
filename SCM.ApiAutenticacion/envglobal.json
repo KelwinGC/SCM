@@ -1,0 +1,11 @@
+{
+  "MSJ": {
+    "20": "Ok",
+    "55": "Error al registrar token en base de datos",
+    "54": "Error genérico en el proceso de registrar token",
+    "53": "Error genérico en el proceso Autenticación ",
+    "44": "Usuario y/o calve Incorrecta",
+    "41": "No se ha indicado el usuario",
+    "42": "No se ha indicado el clave"
+  }
+}
