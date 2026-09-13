@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SCM.ApiGateway.Aplicacion.DTO\SCM.ApiGateway.Aplicacion.DTO.csproj" />
+  </ItemGroup>
+
 </Project>

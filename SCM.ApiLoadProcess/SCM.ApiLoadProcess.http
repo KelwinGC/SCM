@@ -1,0 +1,6 @@
+@SCM.ApiLoadProcess_HostAddress = http://localhost:5134
+
+GET {{SCM.ApiLoadProcess_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

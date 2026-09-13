@@ -1,0 +1,19 @@
+{
+  "MCGS": {
+    "300": "Archivo registrado con éxito",
+    "301": "",
+    "302": "",
+    "303": "",
+    "304": "Debe proporcionar un archivo",
+    "305": "Solo se permiten archivos Excel (.xlsx, .xls)",
+    "306": "El archivo excede el tamaño máximo permitido ({tamanoMaximoMB} MB)",
+    "307": "Error generico en Servicio",
+    "308": "",
+    "309": "",
+    "310": "El token ya fue utilizado en una petición, por lo que no se puede utilizar nuevamente, se recomienda generar uno nuevo",
+    "311": "Error de ejecución de base de datos",
+    "312": ""
+
+  }
+
+}

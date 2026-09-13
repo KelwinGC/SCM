@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ExcelDataReader" Version="3.7.0" />
+    <PackageReference Include="ExcelDataReader.DataSet" Version="3.7.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\SCM.ApiLoadProcess.Aplicacion.DTO\SCM.ApiLoadProcess.Aplicacion.DTO.csproj" />
+    <ProjectReference Include="..\SCM.ApiLoadProcess.Aplicacion.UseCasePorts\SCM.ApiLoadProcess.Aplicacion.UseCasePorts.csproj" />
+    <ProjectReference Include="..\SCM.ApiLoadProcess.Dominio\SCM.ApiLoadProcess.Dominio.csproj" />
+    <ProjectReference Include="..\SCM.Shared\SCM.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

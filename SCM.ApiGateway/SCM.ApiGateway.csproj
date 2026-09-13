@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -9,12 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="8.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\SCM.ApiGateway.Aplicacion.UseCasePorts\SCM.ApiGateway.Aplicacion.UseCasePorts.csproj" />
+    <ProjectReference Include="..\SCM.ApiGateway.Aplicacion.UseCase\SCM.ApiGateway.Aplicacion.UseCase.csproj" />
+    <ProjectReference Include="..\SCM.ApiGateway.Framework.Presentador\SCM.ApiGateway.Framework.Presentador.csproj" />
+    <ProjectReference Include="..\SCM.ApiGateway.Infraestructura.WebServices\SCM.ApiGateway.Infraestructura.WebServices.csproj" />
+    <ProjectReference Include="..\SCM.ApiGateway.Transversal\SCM.ApiGateway.Transversal.csproj" />
   </ItemGroup>
 
 </Project>

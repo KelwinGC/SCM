@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>12597993-df85-49d0-9e8f-830cc9163785</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SCM.ApiLoadProcess.Aplicacion.UseCase\SCM.ApiLoadProcess.Aplicacion.UseCase.csproj" />
+    <ProjectReference Include="..\SCM.ApiLoadProcess.Framework.Presentador\SCM.ApiLoadProcess.Framework.Presentador.csproj" />
+    <ProjectReference Include="..\SCM.ApiLoadProcess.Infraestructura.FilServer\SCM.ApiLoadProcess.Infraestructura.FileServer.csproj" />
+    <ProjectReference Include="..\SCM.ApiLoadProcess.Infraestructura.Repositorio\SCM.ApiLoadProcess.Infraestructura.Repositorio.csproj" />
+    <ProjectReference Include="..\SCM.ApiLoadProcess.Infraestructura\SCM.ApiLoadProcess.Infraestructura.csproj" />
+    <ProjectReference Include="..\SCM.ApiLoadProcess.Transversal\SCM.ApiLoadProcess.Transversal.csproj" />
+    <ProjectReference Include="..\SCM.Shared\SCM.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

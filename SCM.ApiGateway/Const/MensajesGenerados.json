@@ -1,0 +1,12 @@
+{
+  "MCGS": {
+    "100": "No cuenta con los permisos necesarios para consultar el servicio",
+    "101": "Supero su cuota de consumo por día",
+    "102": "Dominio del servicio {NomServicio} no identificado",
+    "103": "No se encontró el servicio, {NomServicio}",
+    "105": "Error generico {NomServicio} [{codigo}] ",
+    "104": "Error en el proceso de ejecución del servicio {NomServicio} en la capa {capa}",
+    "150": "Servicio {NomServicio} respondio con codigo Http {Codigo}",
+    "151": "Servicio {NomServicio} ocurrió un error durante el proceso de ejecución del servicio web, verificar Log del servicio"
+  }
+}

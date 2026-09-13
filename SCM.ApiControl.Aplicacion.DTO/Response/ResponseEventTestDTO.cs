@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SCM.ApiControl.Aplicacion.DTO.Response
+{
+    public class ResponseEventTestDTO
+    {
+        public string Id { get; set; }
+        public int IdCarga { get; set; }
+        public string RutaArchivo { get; set; }
+        public string Usuario { get; set; }
+
+        public DateTime CreationDate { get; set; }
+    }
+}

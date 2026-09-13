@@ -1,0 +1,6 @@
+@SCM.ApiControl_HostAddress = http://localhost:5288
+
+GET {{SCM.ApiControl_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
