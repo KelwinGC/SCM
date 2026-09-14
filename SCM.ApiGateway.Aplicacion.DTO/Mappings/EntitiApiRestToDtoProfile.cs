@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SCM.ApiGateway.Aplicacion.DTO.Response;
-using SCM.ApiGateway.Infraestructura.WebServices.Response;
+using SCM.ApiGateway.Aplicacion.DTO.Response.Services;
 
 
 namespace SCM.ApiGateway.Aplicacion.DTO.Mappings
@@ -9,14 +9,10 @@ namespace SCM.ApiGateway.Aplicacion.DTO.Mappings
     {
         public EntitiApiRestToDtoProfile()
         {
-            //CreateMap<ConsultaPorNumeroDocumentoReniecIrmaResponse, ResponseGenericoDto<PersonaReniecIrmaResponseDto>>()
-            //    .ForMember(des => des.Codigo, ori => ori.MapFrom(src => src.Codigo))
-            //    .ForMember(des => des.Mensaje, ori => ori.MapFrom(src => src.Mensaje))
-            //    .ForMember(des => des.Data, ori => ori.MapFrom(src => src.Data));
-            CreateMap<AutenticacionKeyScmResponse, ResponseGenericoDto<TokenAutenticacionResponseDto>>();
+            CreateMap<AutenticacionScmResponse, ResponseGenericoDto<TokenAutenticacionResponseDto>>();
             CreateMap<TokenAcceso, TokenAutenticacionResponseDto>();
-
-
+            CreateMap<ControlScmResponse, ResponseGenericoDto<ControlResponseDto>>();
+            CreateMap<CargaArchivoResponse, ControlResponseDto>();
         }
     }
 }

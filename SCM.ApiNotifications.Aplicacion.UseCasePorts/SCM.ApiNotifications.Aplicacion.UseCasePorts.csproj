@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SCM.ApiNotifications.Aplication.DTO\SCM.ApiNotifications.Aplicacion.DTO.csproj" />
+  </ItemGroup>
+
 </Project>

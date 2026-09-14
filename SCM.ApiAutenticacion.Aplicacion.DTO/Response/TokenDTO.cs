@@ -9,7 +9,6 @@ namespace SCM.ApiAutenticacion.Aplicacion.DTO.Response
     public class TokenDTO
     {
         public string Token { get; set; } = null!;
-        //public string SessionId { get; set; }
         public string Usuario { get; set; } = null!;
 
     }

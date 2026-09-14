@@ -15,18 +15,18 @@ namespace SCM.ApiGateway.ScmServices
                     client.BaseAddress = new Uri(configuration["SCM:AUTENTICACION:Server"]!);
                 });
 
-            //string? httpClientDni = configuration["SCM:RENIEC:Name"];
-            //ArgumentException.ThrowIfNullOrEmpty(httpClientDni);
-            //services.AddHttpClient(
-            //    httpClientDni,
-            //    client =>
-            //    {
-            //        // Set the base address of the named client.
-            //        client.BaseAddress = new Uri(configuration["IRMA:RENIEC:Server"]!);
-            //        //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("");
-            //        // Add a user-agent default request header.
-            //        //client.DefaultRequestHeaders.UserAgent.ParseAdd("dotnet-docs");
-            //    });
+            string? httpClientControl = configuration["SCM:CONTROL:Name"];
+            ArgumentException.ThrowIfNullOrEmpty(httpClientControl);
+            services.AddHttpClient(
+                httpClientControl,
+                client =>
+                {
+                    // Set the base address of the named client.
+                    client.BaseAddress = new Uri(configuration["SCM:CONTROL:Server"]!);
+                    //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("");
+                    // Add a user-agent default request header.
+                    //client.DefaultRequestHeaders.UserAgent.ParseAdd("dotnet-docs");
+                });
 
 
             return services;    

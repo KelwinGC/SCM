@@ -16,17 +16,15 @@ namespace SCM.ApiAutenticacion.Aplicacion.UseCase
     {
         private readonly IUserRepositorio _repositorio;
         private readonly IAutenticacionTokenOutputPort _outputPort;
-        //private readonly IInsertarTokenAccesoInputPort _insertarAccesoTokenInputPort;
         private readonly IConfiguration _config;
         private readonly ILogger<GetAutenticacion> _logger;
 
         public GetAutenticacion(IUserRepositorio repositorio,
                                         IAutenticacionTokenOutputPort outputPort,
-                                        //IInsertarTokenAccesoInputPort insertarAccesoTokenInputPort,
                                         IConfiguration config,
                                         ILogger<GetAutenticacion> logger) =>
-            (_repositorio, _outputPort, /*_insertarAccesoTokenInputPort,*/ _config, _logger) =
-            (repositorio, outputPort,/* insertarAccesoTokenInputPort,*/ config, logger);
+            (_repositorio, _outputPort, _config, _logger) =
+            (repositorio, outputPort, config, logger);
 
         public async Task Handle(GetAutenticacionDTO request)
         {
@@ -53,7 +51,6 @@ namespace SCM.ApiAutenticacion.Aplicacion.UseCase
 
                 var Token = JwtGenerador.JwtToken(claims, _config["Jwt:Key"]!, _config["Jwt:Issuer"]!, _config["Jwt:Audience"]!, int.Parse(_config["Jwt:TimeSegundosToken"]!));
 
-                //await _insertarAccesoTokenInputPort.Handle(usuario.id,Token, resquest.UsuarioAplicacion);
                 if (Token is not null)
                 {
                     ResponseHeaderDTO responseHeader = new();

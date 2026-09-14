@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace SCM.ApiGateway.Infraestructura.WebServices.Response
+namespace SCM.ApiGateway.Aplicacion.DTO.Response.Services
 {
-    public class AutenticacionKeyScmResponse
+    public class AutenticacionScmResponse
     {
         public string? Codigo { get; set; }
         public string? Mensaje { get; set; }
@@ -14,8 +14,6 @@ namespace SCM.ApiGateway.Infraestructura.WebServices.Response
     public class TokenAcceso
     {
         public string? Token { get; set; }
-        //public Guid? SessionId { get; set; }
-        public string? SessionId { get; set; }
 
     }
 

@@ -14,7 +14,9 @@ namespace SCM.ApiGateway.Aplicacion.UseCase
         {
             //services.AddScoped<IConsultarPorNumeroDeDocumentoReniecInputPort, ConsultarPorNumeroDeDocumentoReniec>();
             services.AddAutoMapper(typeof(EntitiApiRestToDtoProfile));
-            services.AddScoped<IAutenticacionInputPort, AutenticacionScm>();
+            services.AddScoped<IAutenticacionInputPort, AutenticacionScmUseCase>();
+            services.AddScoped<IControlInputPort, ControlScmUseCase>();
+
 
             return services;
         }

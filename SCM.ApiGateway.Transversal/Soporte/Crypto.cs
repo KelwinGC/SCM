@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace IRMA.ApiGateway.Transversal.Soporte
+namespace SCM.ApiGateway.Transversal.Soporte
 {
     public static class Crypto
     {

@@ -1,5 +1,4 @@
 ﻿using SCM.ApiLoadProcess.Dominio.Entidad;
-using SCM.ApiLoadProcess.Dominio.Entidad;
 
 namespace SCM.ApiLoadProcess.Dominio.Interface
 {

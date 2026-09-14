@@ -13,6 +13,7 @@
    
 
   <ItemGroup>
+    <ProjectReference Include="..\SCM.ApiGateway.Aplicacion.DTO\SCM.ApiGateway.Aplicacion.DTO.csproj" />
     <ProjectReference Include="..\SCM.ApiGateway.Aplicacion.UseCasePorts\SCM.ApiGateway.Aplicacion.UseCasePorts.csproj" />
     <ProjectReference Include="..\SCM.ApiGateway.Infraestructura.WebServices\SCM.ApiGateway.Infraestructura.WebServices.csproj" />
   </ItemGroup>

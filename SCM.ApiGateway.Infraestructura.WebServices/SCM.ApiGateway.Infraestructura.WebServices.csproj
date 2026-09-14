@@ -10,4 +10,13 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
   </ItemGroup>
   
+  <ItemGroup>
+    <ProjectReference Include="..\SCM.ApiGateway.Aplicacion.DTO\SCM.ApiGateway.Aplicacion.DTO.csproj" />
+    <ProjectReference Include="..\SCM.ApiGateway.Transversal\SCM.ApiGateway.Transversal.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Response\" />
+  </ItemGroup>
+  
 </Project>

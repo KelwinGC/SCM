@@ -11,6 +11,7 @@ namespace SCM.ApiGateway.Framework.Presentador
         {
             //service.AddScoped<IConsultarPorNumeroDeDocumentoReniecOutputPort, ConsultaPorNumeroDeDocumentoReniecJson>();
             service.AddScoped<IAutenticacionOutputPort, AutenticacionScmJson>();
+            service.AddScoped<IControlOutputPort, ControlScmJson>();
             return service;
         }
     }

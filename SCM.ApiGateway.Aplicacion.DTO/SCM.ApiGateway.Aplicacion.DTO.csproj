@@ -8,10 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
-  </ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
 
-  <ItemGroup>
-    <ProjectReference Include="..\SCM.ApiGateway.Infraestructura.WebServices\SCM.ApiGateway.Infraestructura.WebServices.csproj" />
   </ItemGroup>
   
 </Project>

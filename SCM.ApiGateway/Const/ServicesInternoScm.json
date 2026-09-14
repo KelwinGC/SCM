@@ -5,34 +5,10 @@
       "Server": "https://localhost:7149",
       "Uri": "https://localhost:7149/api/acceso"
     },
-    "RENIEC": {
-      "Name": "DniReniecIrma",
-      "Server": "https://localhost:7145",
-      "ConsultaPorNumeroDocumento": {
-        //"CodId": "285B3F25-BF30-403D-B8FA-618654A70F20" // Dev/QA/Prod
-        "CodId": "a5827fd9-914e-4780-8ecb-47004cd2bcbc" // local
-      },
-      "ConsultaBasicaPorNumeroDocumento": {
-        //"CodId": "1B3F01DF-E59D-47E0-A938-5AD8C9210B94" // Prod
-        "CodId": "d8202a65-741f-4edb-b76c-39eb7d5bf1e5" // local
-      },
-      "ConsultaPidePorNumeroDocumento": {
-        //"CodId": "0117D21B-EBD0-4320-9A8C-BF2710D1D86D" // Dev
-        "CodId": "26145D6A-8860-4FBA-A128-CD94A3EFBEC2" // Local
-
-      },
-      "ConsultaMenorEdad": {
-        //"CodId": "B273A07B-C74E-4C00-AF1E-31107747B486" // Dev/QA/Prod
-        "CodId": "206f6697-1cc4-4a8c-b40b-e47151233b33" // local
-      }
-
-    },
-    "MIGRACIONES": {
-      "CEE": {
-        "Name": "CeeMigracionesIrma",
-        "Server": "https://localhost:7032",
-        "CodId": "285B3F25-BF30-403D-B8FA-618654A70F21"
-      }
+    "CONTROL": {
+      "Name": "ControlScm",
+      "Server": "https://localhost:7120",
+      "Uri": "https://localhost:7120/api/CargarArchivo"
     }
   }
 }

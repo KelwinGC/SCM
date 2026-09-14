@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Logging;
 using SCM.ApiLoadProcess.Aplicacion.DTO.Request;
 using SCM.ApiLoadProcess.Aplicacion.UseCasePorts.InputPort;
-//using SCM.ApiLoadProcess.Dominio.Events;
 using SCM.Shared.Contracts;
 
 namespace SCM.ApiLoadProcess.Infraestructura

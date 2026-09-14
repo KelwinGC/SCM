@@ -9,10 +9,10 @@ namespace SCM.ApiGateway.Infraestructura.WebServices
     {
         public static IServiceCollection AddWebServices(this IServiceCollection services)
         {
-            //services.AddScoped<IConsultaPorNumeroDocumentoReniecIrma, ConsultaPorNumeroDocumentoReniecIrma>();
-            services.AddScoped<IAutenticacionKeyScm, AutenticacionKeyScm>();
+            services.AddScoped<IAutenticacionScm, AutenticacionScm>();
+            services.AddScoped<IControlScm, ControlScm>();
             return services;
- 
+
         }
     }
 }

@@ -1,27 +1,27 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using SCM.ApiGateway.Aplicacion.DTO.Response.Services;
 using SCM.ApiGateway.Infraestructura.WebServices.Interface;
-using SCM.ApiGateway.Infraestructura.WebServices.Response;
 using System.Text;
 using System.Text.Json;
 
 namespace SCM.ApiGateway.Infraestructura.WebServices.Servicios
 {
-    public class AutenticacionKeyScm : IAutenticacionKeyScm
+    public class AutenticacionScm : IAutenticacionScm
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IConfiguration _configuration;
-        private readonly ILogger<AutenticacionKeyScm> _logger;
+        private readonly ILogger<AutenticacionScm> _logger;
 
-        public AutenticacionKeyScm(IHttpClientFactory httpClientFactory,
+        public AutenticacionScm(IHttpClientFactory httpClientFactory,
                                                     IConfiguration configuration,
-                                                    ILogger<AutenticacionKeyScm> logger) =>
+                                                    ILogger<AutenticacionScm> logger) =>
                                                     (_httpClientFactory, _configuration, _logger) =
                                                     (httpClientFactory, configuration, logger);
 
-        public async Task<AutenticacionKeyScmResponse> AutenticacionScm(string usuario, string clave)
+        public async Task<AutenticacionScmResponse> Autenticar(string usuario, string clave)
         {
-            AutenticacionKeyScmResponse responseApiRest = new();
+            AutenticacionScmResponse responseApiRest = new();
             try
             {
                 #region Consolidar Request
@@ -42,7 +42,7 @@ namespace SCM.ApiGateway.Infraestructura.WebServices.Servicios
                 if (response.IsSuccessStatusCode)
                 {
                     var dato = await response.Content.ReadAsStringAsync();                   
-                    responseApiRest = JsonSerializer.Deserialize<AutenticacionKeyScmResponse>(dato, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
+                    responseApiRest = JsonSerializer.Deserialize<AutenticacionScmResponse>(dato, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
                 }
                 else
                 {
@@ -55,7 +55,7 @@ namespace SCM.ApiGateway.Infraestructura.WebServices.Servicios
             {
                 responseApiRest.Codigo = "151";
                 responseApiRest.Mensaje = _configuration["MCGS:151"]!.Replace("{NomServicio}", "Autenticación SCM");
-                _logger.LogError($"IRMA ApiGateway Infraestructura WebServices Servicios AutenticacionKeyScm AutenticacionScm \n {responseApiRest.Mensaje} \n {ex.Message} ");
+                _logger.LogError($"SCM ApiGateway Infraestructura WebServices Servicios AutenticacionKeyScm AutenticacionScm \n {responseApiRest.Mensaje} \n {ex.Message} ");
             }
             return responseApiRest;
         }

@@ -4,40 +4,40 @@ using SCM.ApiGateway.Aplicacion.DTO.Response;
 using SCM.ApiGateway.Aplicacion.UseCasePorts.InputPort;
 using SCM.ApiGateway.Aplicacion.UseCasePorts.OutputPort;
 using SCM.ApiGateway.Infraestructura.WebServices.Interface;
-using SCM.ApiGateway.Infraestructura.WebServices.Response;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using SCM.ApiGateway.Aplicacion.DTO.Response.Services;
 
 
 namespace SCM.ApiGateway.Aplicacion.UseCase
 {
-    public class AutenticacionScm : IAutenticacionInputPort
+    public class AutenticacionScmUseCase : IAutenticacionInputPort
     {
         private readonly IAutenticacionOutputPort _outputPort;
         private readonly IConfiguration _configuration;
-        private readonly ILogger<AutenticacionScm> _logger;
+        private readonly ILogger<AutenticacionScmUseCase> _logger;
         private readonly IMapper _mapper;
-        private readonly IAutenticacionKeyScm _autenticacionKeyScm;
+        private readonly IAutenticacionScm _autenticacionScm;
 
-        public AutenticacionScm(IAutenticacionOutputPort outputPort, 
+        public AutenticacionScmUseCase(IAutenticacionOutputPort outputPort, 
                                     IConfiguration configuration,
-                                    ILogger<AutenticacionScm> logger,
+                                    ILogger<AutenticacionScmUseCase> logger,
                                     IMapper mapper,
-                                    IAutenticacionKeyScm autenticacionKeyScm)
+                                    IAutenticacionScm autenticacionScm)
         {
             _configuration = configuration;
             _outputPort = outputPort;
             _logger = logger;
             _mapper = mapper;
-            _autenticacionKeyScm = autenticacionKeyScm;
+            _autenticacionScm = autenticacionScm;
         }
 
-        public async Task Handle(AccesosRequest request)
+        public async Task Handle(AccesosRequestDto request)
         {
             ResponseGenericoDto<TokenAutenticacionResponseDto> response = new();
             try
             {
-                AutenticacionKeyScmResponse responseApiRestScm =  await _autenticacionKeyScm.AutenticacionScm(request.Usuario!, request.Clave!);
+                AutenticacionScmResponse responseApiRestScm =  await _autenticacionScm.Autenticar(request.Usuario!, request.Clave!);
                 response = _mapper.Map<ResponseGenericoDto<TokenAutenticacionResponseDto>>(responseApiRestScm);
             }catch (Exception ex)
             {

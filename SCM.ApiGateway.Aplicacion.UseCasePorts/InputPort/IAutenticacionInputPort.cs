@@ -4,6 +4,6 @@ namespace SCM.ApiGateway.Aplicacion.UseCasePorts.InputPort
 {
     public interface IAutenticacionInputPort
     {
-        Task Handle(AccesosRequest request);
+        Task Handle(AccesosRequestDto request);
     }
 }

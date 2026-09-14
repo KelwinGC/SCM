@@ -2,6 +2,8 @@ using MassTransit;
 using SCM.Shared.Contracts;
 using SCM.ApiNotifications.Infraestructura.Messaging;
 using Microsoft.Extensions.Logging;
+using SCM.ApiNotifications.Aplicacion.UseCasePorts.InputPort;
+using SCM.ApiNotifications.Aplicacion.DTO.Request;
 
 namespace SCM.ApiNotifications.Infraestructura;
 
@@ -9,33 +11,42 @@ public class ArchivoProcesadoEventConsumer : IConsumer<ArchivoProcesadoEvent>
 {
     private readonly NotificacionesStore _store;
     private readonly ILogger<ArchivoProcesadoEventConsumer> _logger;
+    private readonly INotificarInputPort _inputPort;
 
-    public ArchivoProcesadoEventConsumer(NotificacionesStore store, ILogger<ArchivoProcesadoEventConsumer> logger)
+    public ArchivoProcesadoEventConsumer(
+        NotificacionesStore store, 
+        ILogger<ArchivoProcesadoEventConsumer> logger,
+        INotificarInputPort inputPort
+        )
     {
         _store = store;
         _logger = logger;
+        _inputPort = inputPort;
     }
 
-    public Task Consume(ConsumeContext<ArchivoProcesadoEvent> context)
+    public async Task Consume(ConsumeContext<ArchivoProcesadoEvent> context)
     {
-        var @event = context.Message;
-        _store.Add(@event);
+        var message = context.Message;
 
-        if (@event.Exitoso)
+        try
         {
-            _logger.LogInformation(
-                "Notificar a {Usuario}: la carga {IdCarga} se proceso OK ({Registros} registros).",
-                @event.Usuario, @event.IdCarga, @event.RegistrosProcesados);
+            _logger.LogInformation($"[CONSUMER-NOTIFICATION] Procesando mensaje - IdCarga: {message.IdCarga}, Usuario: {message.Usuario}");
+
+            // Usar el UseCase para procesar el archivo
+            var peticion = new PeticionNotificarDTO
+            {
+                IdCarga = message.IdCarga,
+                Usuario = message.Usuario
+            };
+
+            await _inputPort.Handle(peticion);
+
+            _logger.LogInformation($"[CONSUMER-NOTIFICATION] Mensaje procesado exitosamente - IdCarga: {message.IdCarga}");
         }
-        else
+        catch (Exception ex)
         {
-            _logger.LogWarning(
-                "Notificar a {Usuario}: la carga {IdCarga} fallo. Motivo: {Mensaje}",
-                @event.Usuario, @event.IdCarga, @event.Mensaje);
+            _logger.LogError($"[CONSUMER-NOTIFICATION] Error procesando mensaje - IdCarga: {message.IdCarga}, Error: {ex.Message}");
+            throw; // Reintentará el mensaje
         }
-
-        // Aca en un caso real: enviar email/push/SMS, guardar en tabla de notificaciones, etc.
-
-        return Task.CompletedTask;
     }
 }

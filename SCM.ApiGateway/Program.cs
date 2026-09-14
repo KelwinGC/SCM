@@ -3,7 +3,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SCM.ApiGateway.Aplicacion.UseCase;
 using SCM.ApiGateway.Framework.Presentador;
-//using SCM.ApiGateway.Infraestructura.RepositorioSqlServer;
 using SCM.ApiGateway.Infraestructura.WebServices;
 using SCM.ApiGateway.ScmServices;
 using SCM.ApiGateway.Transversal;
@@ -45,13 +44,11 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 builder.Services.AddHttpContextAccessor();
-//builder.Logging.AddLog4Net();
 builder.Configuration
     .AddJsonFile("Const/ServicesInternoScm.json", true, true)
     .AddJsonFile("Const/MensajesGenerados.json", true, true);
 
 builder.Services.AddUseCaseServicios();
-//builder.Services.AddRepositorioSqlServer();
 builder.Services.AddWebServices();
 builder.Services.AddPresenters();
 builder.Services.AddTransversalServicios();

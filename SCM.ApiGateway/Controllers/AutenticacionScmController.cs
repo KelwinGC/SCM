@@ -21,7 +21,7 @@ namespace SCM.ApiGateway.Controllers
             (_outputPort,_inputPort) = (outputPort,inputPort);
 
         [HttpPost("Autenticacion")]
-        public async Task<Json<TokenAutenticacionResponseDto>> Autenticacion(AccesosRequest request)
+        public async Task<Json<TokenAutenticacionResponseDto>> Autenticacion(AccesosRequestDto request)
         {
             await _inputPort.Handle(request);
             var respuesta = ((IPresenterDataResponse<Json<TokenAutenticacionResponseDto>>)_outputPort).Contenido;

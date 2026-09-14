@@ -11,14 +11,17 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\SCM.ApiNotifications.Aplicacion.UseCasePorts\SCM.ApiNotifications.Aplicacion.UseCasePorts.csproj" />
+    <ProjectReference Include="..\SCM.ApiNotifications.Aplication.DTO\SCM.ApiNotifications.Aplicacion.DTO.csproj" />
+    <ProjectReference Include="..\SCM.ApiNotifications.Aplication.UseCase\SCM.ApiNotifications.Aplicacion.UseCase.csproj" />
+    <ProjectReference Include="..\SCM.ApiNotifications.Framework.Presentador\SCM.ApiNotifications.Framework.Presentador.csproj" />
+    <ProjectReference Include="..\SCM.ApiNotifications.Infraestructura.Repositorio\SCM.ApiNotifications.Infraestructura.Repositorio.csproj" />
     <ProjectReference Include="..\SCM.ApiNotifications.Infraestructura\SCM.ApiNotifications.Infraestructura.csproj" />
+    <ProjectReference Include="..\SCM.ApiNotifications.Transversal\SCM.ApiNotifications.Transversal.csproj" />
     <ProjectReference Include="..\SCM.Shared\SCM.Shared.csproj" />
   </ItemGroup>
 

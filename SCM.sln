@@ -161,9 +161,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiRestFul", "ApiRestFul", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentador", "Presentador", "{C8FCFACA-B5CB-4477-B902-3EFC07E3DBB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCM.ApiNotifications.Aplication.DTO", "SCM.ApiNotifications.Aplication.DTO\SCM.ApiNotifications.Aplication.DTO.csproj", "{61C3A7AF-A788-4240-8893-D529EC162738}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCM.ApiNotifications.Aplicacion.DTO", "SCM.ApiNotifications.Aplication.DTO\SCM.ApiNotifications.Aplicacion.DTO.csproj", "{61C3A7AF-A788-4240-8893-D529EC162738}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCM.ApiNotifications.Aplication.UseCase", "SCM.ApiNotifications.Aplication.UseCase\SCM.ApiNotifications.Aplication.UseCase.csproj", "{5ABBD450-16C8-407A-97DF-BA178E7008B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCM.ApiNotifications.Aplicacion.UseCase", "SCM.ApiNotifications.Aplication.UseCase\SCM.ApiNotifications.Aplicacion.UseCase.csproj", "{5ABBD450-16C8-407A-97DF-BA178E7008B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCM.ApiNotifications.Aplicacion.UseCasePorts", "SCM.ApiNotifications.Aplicacion.UseCasePorts\SCM.ApiNotifications.Aplicacion.UseCasePorts.csproj", "{5F2149A1-97BE-4C13-85B0-C1835AA0C7E5}"
 EndProject
@@ -172,6 +172,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCM.ApiNotifications", "SCM.ApiNotifications\SCM.ApiNotifications.csproj", "{63E807DC-FD11-44A1-877C-FC675F1ECBD4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCM.ApiNotifications.Infraestructura", "SCM.ApiNotifications.Infraestructura\SCM.ApiNotifications.Infraestructura.csproj", "{AF34F7DC-BB26-4546-877C-146EF0F34ECC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCM.ApiNotifications.Dominio", "SCM.ApiNotifications.Dominio\SCM.ApiNotifications.Dominio.csproj", "{7C0F1D39-EC74-4D9F-9526-063A0BD57411}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCM.ApiNotifications.Transversal", "SCM.ApiNotifications.Transversal\SCM.ApiNotifications.Transversal.csproj", "{6C05D9B8-B176-4FDC-8DB9-0A20209F6DD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -351,6 +355,14 @@ Global
 		{AF34F7DC-BB26-4546-877C-146EF0F34ECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF34F7DC-BB26-4546-877C-146EF0F34ECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF34F7DC-BB26-4546-877C-146EF0F34ECC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C0F1D39-EC74-4D9F-9526-063A0BD57411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C0F1D39-EC74-4D9F-9526-063A0BD57411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C0F1D39-EC74-4D9F-9526-063A0BD57411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C0F1D39-EC74-4D9F-9526-063A0BD57411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C05D9B8-B176-4FDC-8DB9-0A20209F6DD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C05D9B8-B176-4FDC-8DB9-0A20209F6DD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C05D9B8-B176-4FDC-8DB9-0A20209F6DD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C05D9B8-B176-4FDC-8DB9-0A20209F6DD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -438,6 +450,8 @@ Global
 		{A187D0AE-E77A-48ED-8935-40F8FDA7A8F7} = {C8FCFACA-B5CB-4477-B902-3EFC07E3DBB5}
 		{63E807DC-FD11-44A1-877C-FC675F1ECBD4} = {11252519-57A1-4A4A-87A3-DFA5E1D026A1}
 		{AF34F7DC-BB26-4546-877C-146EF0F34ECC} = {DAEE3CE4-FACF-448C-AC4E-7C76D23D303D}
+		{7C0F1D39-EC74-4D9F-9526-063A0BD57411} = {C827B7F0-504B-4B60-BC5D-581A6FCDCB61}
+		{6C05D9B8-B176-4FDC-8DB9-0A20209F6DD1} = {0EAE2835-0597-42CD-91E9-0220B11546CB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0BC8CA3A-69CC-48C8-8BEF-EE42E1A12EFF}

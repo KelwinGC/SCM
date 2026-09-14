@@ -5,13 +5,10 @@ using SCM.ApiControl.Aplicacion.DTO.Response;
 using SCM.ApiControl.Aplicacion.UseCasePorts.InputPort;
 using SCM.ApiControl.Aplicacion.UseCasePorts.OutputPort;
 using SCM.ApiControl.Dominio.Entidad;
-//using SCM.ApiControl.Dominio.Events;
-using SCM.Shared.EventBus.Abstractions;
 using SCM.ApiControl.Dominio.Interface;
+using SCM.Shared.EventBus.Abstractions;
 using SCM.Shared.Contracts;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace SCM.ApiControl.Aplicacion.UseCase
 {
@@ -82,7 +79,7 @@ namespace SCM.ApiControl.Aplicacion.UseCase
                 var cargaArchivo = new CargaArchivo
                 {
                     NombreArchivo = archivoGuardado.NombreArchivo,
-                    Usuario =  archivoGuardado.Usuario, 
+                    Usuario =  peticion.Usuario, 
                     FechaRegistro = DateTime.UtcNow,
                     Estado = "Pendiente",
                     TamanoBytes = archivoGuardado.TamanoBytes,
@@ -92,17 +89,6 @@ namespace SCM.ApiControl.Aplicacion.UseCase
                 // Guardar registro en base de datos
                 var resultado = await _cargaArchivoRepositorio.RegistrarCargaArchivo(cargaArchivo);
 
-                //TODO: Enviar mensaje a cola carga_masiva de RabbitMQ
-                /* Publicamos el evento */
-                //var cargaArchivoCreatedEvent = new CargaArchivoCreatedEvent();
-                //cargaArchivoCreatedEvent.IdCarga = resultado.IdCarga;
-                //cargaArchivoCreatedEvent.RutaArchivo = resultado.RutaArchivo;
-                //cargaArchivoCreatedEvent.Usuario = resultado.Usuario;
-
-                //_mapper.Map<DiscountCreatedEvent>(discount);
-                //_eventBus.Publish(cargaArchivoCreatedEvent);
-                //await _eventBus.PublishAsync(cargaArchivoCreatedEvent);
-                //var @event = new CargaArchivoCreatedIntegrationEvent(resultado.IdCarga, resultado.RutaArchivo, resultado.Usuario);
                 var cargaArchivoCreatedEvent = new CargaArchivoCreatedEvent(resultado.IdCarga, resultado.RutaArchivo, resultado.Usuario);
                 await _eventBus.PublishAsync(cargaArchivoCreatedEvent);
 

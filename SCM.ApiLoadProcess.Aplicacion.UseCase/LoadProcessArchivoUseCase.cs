@@ -46,9 +46,10 @@ namespace SCM.ApiLoadProcess.Aplicacion.UseCase
         {
             CargaArchivo? cargaArchivo = null;
             var responseHeader = new ResponseHeaderDTO();
-
+            
             try
-            {
+            {              
+
                 _logger.LogInformation($"Iniciando procesamiento de archivo. IdCarga: {peticion.IdCarga}, Usuario: {peticion.Usuario}");
 
                 //Obtener datos de CargaArchivo 
@@ -61,16 +62,15 @@ namespace SCM.ApiLoadProcess.Aplicacion.UseCase
                 }
                 _logger.LogInformation($"Archivo obtenido exitosamente: {cargaArchivo.NombreArchivo}");
 
-                // Actualizar estado CargaArchivo en BD
                 cargaArchivo = await _loadProcessRepositorio.ActualizarEstadoCargaArchivoAsync(cargaArchivo.IdCarga, "En proceso");
                 _logger.LogInformation($"En procesamiento. IdCarga: {peticion.IdCarga}");
 
-                // Procesar datos (validar, transformar, insertar en BD)
                 _logger.LogInformation("Procesando y validando datos del archivo");
                 var numeroRegistros = await ProcesarDatos(cargaArchivo, peticion.Usuario);
-                if (numeroRegistros == 0)   { return; } 
+                if (numeroRegistros == 0)   { 
+                    throw new InvalidOperationException($"No se pudo cargar datos del ArchivoCarga en la base de datos.  IdCarga: {peticion.IdCarga}");
+                } 
 
-                // Actualizar estado CargaArchivo en BD
                 cargaArchivo = await _loadProcessRepositorio.ActualizarEstadoCargaArchivoAsync(cargaArchivo.IdCarga, "Cargado");
                 _logger.LogInformation($"Procesamiento completado exitosamente. IdCarga: {peticion.IdCarga}");
 
@@ -81,7 +81,6 @@ namespace SCM.ApiLoadProcess.Aplicacion.UseCase
                 cargaArchivo = await _loadProcessRepositorio.ActualizarEstadoCargaArchivoAsync(cargaArchivo.IdCarga, "Finalizado");
                 _logger.LogInformation($"Procesamiento completado exitosamente. IdCarga: {peticion.IdCarga}");
 
-                // Responder con éxito
                 responseHeader.Codigo = "200";
                 responseHeader.Mensaje = "Archivo procesado exitosamente";
 
@@ -106,7 +105,6 @@ namespace SCM.ApiLoadProcess.Aplicacion.UseCase
                 if (cargaArchivo != null)
                 {
                     cargaArchivo.Estado = "Error - Validación";
-                    //cargaArchivo.FechaFin = DateTime.Now;
                     PublicarEventoError(cargaArchivo, ex.Message);
                 }
 
@@ -122,7 +120,6 @@ namespace SCM.ApiLoadProcess.Aplicacion.UseCase
                 if (cargaArchivo != null)
                 {
                     cargaArchivo.Estado = "Error - Operación";
-                    //cargaArchivo.FechaFin = DateTime.Now;
                     PublicarEventoError(cargaArchivo, ex.Message);
                 }
 
@@ -146,22 +143,19 @@ namespace SCM.ApiLoadProcess.Aplicacion.UseCase
                 responseHeader.Mensaje = "Error inesperado durante el procesamiento del archivo";
                 
                 await NotificarError(responseHeader, cargaArchivo);
-                throw;
+                //throw;
             }
         }
 
-        /// <summary>
-        /// Procesa, valida y transforma los datos del archivo para insersión en BD
-        /// </summary>
         private async Task<int> ProcesarDatos(CargaArchivo cargaArchivo, string usuario)
-        {
-            if (cargaArchivo == null)
-            {
-                throw new ArgumentException("El archivo no puede ser nulo");
-            }
+        {           
 
             try
             {
+                if (cargaArchivo == null)
+                {
+                    throw new ArgumentException("El archivo no puede ser nulo");
+                }
                 // 1. Descargar el archivo desde la URL
                 using var response = await _httpClient.GetAsync(cargaArchivo.RutaArchivo, HttpCompletionOption.ResponseHeadersRead);
 
@@ -207,7 +201,6 @@ namespace SCM.ApiLoadProcess.Aplicacion.UseCase
                             Descripcion = descripcion,
                             Cantidad = cantidad,
                             IdCarga  = cargaArchivo.IdCarga
-                            //FechaCarga = DateTime.Now
                         });
                     }
                 }
@@ -225,9 +218,6 @@ namespace SCM.ApiLoadProcess.Aplicacion.UseCase
             }
         }
 
-        /// <summary>
-        /// Publica evento de éxito en el event bus
-        /// </summary>
         private async Task PublicarEventoExito(CargaArchivo cargaArchivo, int numeroRegistros)
         {
             try
@@ -248,9 +238,6 @@ namespace SCM.ApiLoadProcess.Aplicacion.UseCase
             }
         }
 
-        /// <summary>
-        /// Publica evento de error en el event bus
-        /// </summary>
         private async Task PublicarEventoError(CargaArchivo cargaArchivo, string mensajeError)
         {
             try
@@ -272,9 +259,6 @@ namespace SCM.ApiLoadProcess.Aplicacion.UseCase
             }
         }
 
-        /// <summary>
-        /// Notifica el error al output port
-        /// </summary>
         private async Task NotificarError(ResponseHeaderDTO responseHeader, CargaArchivo? cargaArchivo)
         {
             try

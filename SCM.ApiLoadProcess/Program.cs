@@ -1,15 +1,15 @@
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SCM.ApiLoadProcess.Aplicacion.UseCase;
 using SCM.ApiLoadProcess.Framework.Presentador;
 using SCM.ApiLoadProcess.Infraestructura;
-using SCM.ApiLoadProcess.Infraestructura.Repositorio;
 using SCM.ApiLoadProcess.Infraestructura.FileServer;
+using SCM.ApiLoadProcess.Infraestructura.Repositorio;
 using SCM.ApiLoadProcess.Transversal;
-using System.Text;
 using SCM.Shared.EventBus.DependencyInjection;
-using MassTransit;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -15,6 +15,7 @@
 
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SCM.ApiNotifications.Aplicacion.UseCasePorts\SCM.ApiNotifications.Aplicacion.UseCasePorts.csproj" />
     <ProjectReference Include="..\SCM.Shared\SCM.Shared.csproj" />
   </ItemGroup>
 
